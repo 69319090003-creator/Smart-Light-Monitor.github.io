@@ -4,200 +4,1779 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Smart Light Monitor</title>
+    <title>Smart Light Monitor | โครงงานเทคโนโลยีคอมพิวเตอร์</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f7f5;
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
+            box-sizing: border-box;
         }
 
-        header {
-            background-color: #1b5e20;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Segoe UI",
+                "Noto Sans Thai",
+                Arial,
+                sans-serif;
+
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            z-index: 1000;
+
+            background: rgba(15, 23, 42, 0.94);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
             color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #22c55e,
+                    #06b6d4
+                );
+
+            font-size: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #22c55e;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(34,197,94,0.25),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(6,182,212,0.22),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #111827,
+                    #0f172a
+                );
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding:
+                120px 25px
+                70px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr
+                0.9fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+
+            padding:
+                6px 14px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(34,197,94,0.12);
+
+            border:
+                1px solid
+                rgba(34,197,94,0.35);
+
+            color: #86efac;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(
+                    45px,
+                    7vw,
+                    80px
+                );
+
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #86efac,
+                    #67e8f9
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+
+            font-weight: 400;
+
+            color: #cbd5e1;
+
+            margin-bottom: 25px;
+        }
+
+        .hero-description {
+            color: #94a3b8;
+
+            font-size: 17px;
+
+            max-width: 650px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding:
+                12px 22px;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #22c55e,
+                    #06b6d4
+                );
+
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(34,197,94,0.25);
+        }
+
+        .btn-outline {
+            border:
+                1px solid
+                #475569;
+
+            color: #e2e8f0;
+        }
+
+        .btn-outline:hover {
+            border-color: #22c55e;
+
+            color: #86efac;
+        }
+
+
+        /* =====================================================
+           PROJECT CARD
+        ===================================================== */
+
+        .project-card {
+            position: relative;
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,0.25);
+        }
+
+        .light-icon {
+            width: 120px;
+            height: 120px;
+
+            margin:
+                0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 55px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #fef08a,
+                    #facc15 40%,
+                    rgba(250,204,21,0.1)
+                );
+
+            box-shadow:
+                0 0 70px
+                rgba(250,204,21,0.4);
+        }
+
+        .project-card h3 {
             text-align: center;
-            padding: 40px 20px;
+
+            font-size: 24px;
+
+            margin-bottom: 20px;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 36px;
+        .project-info {
+            display: grid;
+
+            gap: 12px;
         }
 
-        header p {
-            font-size: 18px;
-            margin: 10px 0;
+        .info-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding:
+                10px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+        .info-row span:first-child {
+            color: #94a3b8;
+        }
+
+        .info-row span:last-child {
+            color: white;
+
+            font-weight: 600;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION
+        ===================================================== */
+
+        section {
+            padding: 90px 20px;
         }
 
         .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .section-label {
+            color: #16a34a;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 38px;
+
+            color: #0f172a;
+
+            margin-top: 8px;
+        }
+
+        .section-subtitle {
+            max-width: 650px;
+
+            margin:
+                10px auto 0;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 30px;
         }
 
         .card {
-            background-color: white;
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                #e2e8f0;
+
+            box-shadow:
+                0 10px 30px
+                rgba(15,23,42,0.05);
+        }
+
+        .card h3 {
+            font-size: 22px;
+
+            margin-bottom: 15px;
+
+            color: #0f172a;
+        }
+
+        .card p {
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           FLOW
+        ===================================================== */
+
+        .flow {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .flow-card {
+            background: white;
+
+            padding: 25px 20px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                #e2e8f0;
+
+            position: relative;
+        }
+
+        .flow-number {
+            width: 45px;
+            height: 45px;
+
+            margin:
+                0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #22c55e,
+                    #06b6d4
+                );
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+        .flow-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .flow-card p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           EQUIPMENT
+        ===================================================== */
+
+        .equipment-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .equipment {
+            background: white;
+
             padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                #e2e8f0;
+
+            transition: 0.3s;
         }
 
-        .card h2 {
-            color: #1b5e20;
-            border-left: 5px solid #4caf50;
-            padding-left: 10px;
+        .equipment:hover {
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(15,23,42,0.1);
         }
 
-        .info {
-            line-height: 1.8;
+        .equipment-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+        .equipment h3 {
             font-size: 17px;
         }
 
-        ul {
-            line-height: 1.8;
+        .equipment p {
+            color: #64748b;
+
+            font-size: 14px;
         }
 
-        .highlight {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
         }
+
+        .feature {
+            display: flex;
+
+            gap: 18px;
+
+            padding: 25px;
+
+            background: white;
+
+            border-radius: 16px;
+
+            border:
+                1px solid
+                #e2e8f0;
+        }
+
+        .feature-icon {
+            min-width: 48px;
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #dcfce7;
+
+            font-size: 22px;
+        }
+
+        .feature h3 {
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           OBJECTIVES
+        ===================================================== */
+
+        .objectives {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ecfdf5,
+                    #f0fdfa
+                );
+        }
+
+        .objective-list {
+            max-width: 800px;
+
+            margin: auto;
+
+            display: grid;
+
+            gap: 15px;
+        }
+
+        .objective {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(15,23,42,0.04);
+        }
+
+        .check {
+            color: #16a34a;
+
+            font-size: 22px;
+        }
+
+
+        /* =====================================================
+           BENEFITS
+        ===================================================== */
+
+        .benefits-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .benefit {
+            padding: 30px;
+
+            background:
+                #0f172a;
+
+            color: white;
+
+            border-radius: 18px;
+        }
+
+        .benefit-icon {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        .benefit p {
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
-            background-color: #1b5e20;
+            background: #020617;
+
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+
+            padding: 50px 20px 25px;
         }
+
+        .footer-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-author {
+            color: #94a3b8;
+
+            margin-bottom: 25px;
+        }
+
+        .footer-line {
+            height: 1px;
+
+            background:
+                #1e293b;
+
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .flow,
+            .equipment-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                padding-top: 110px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .about-grid,
+            .features,
+            .flow,
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 65px 15px;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Smart Light Monitor</h1>
-        <p>ระบบตรวจวัดและแสดงระดับความสว่าง</p>
-    </header>
 
-    <div class="container">
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-        <!-- ข้อมูลโครงงาน -->
-        <section class="card">
-            <h2>ข้อมูลโครงงาน</h2>
+<nav class="navbar">
 
-            <div class="info">
-                <p><strong>ชื่อโครงงาน:</strong> Smart Light Monitor</p>
+    <div class="nav-container">
 
-                <p><strong>จัดทำโดย:</strong>
-                    นายทีปกร เพชรย่องข่าย
-                </p>
+        <a href="#home" class="logo">
 
-                <p><strong>แผนกวิชา:</strong>
-                    เทคโนโลยีคอมพิวเตอร์
-                </p>
-
-                <p><strong>สถานศึกษา:</strong>
-                    วิทยาลัยเทคนิคตรัง
-                </p>
+            <div class="logo-icon">
+                💡
             </div>
-        </section>
 
-        <!-- บทนำ -->
-        <section class="card">
-            <h2>หลักการและเหตุผล</h2>
+            Smart Light Monitor
 
-            <p>
-                Smart Light Monitor เป็นโครงงานที่พัฒนาขึ้นเพื่อใช้ตรวจวัด
-                ระดับความสว่างของสภาพแวดล้อม โดยใช้เซนเซอร์ LDR
-                ในการตรวจจับปริมาณแสง และใช้บอร์ด ESP32-2432S028
-                เป็นตัวประมวลผลและแสดงผลข้อมูลบนหน้าจอ TFT
-            </p>
+        </a>
 
-            <p>
-                ระบบสามารถนำค่าที่ตรวจวัดได้มาประเมินระดับความสว่าง
-                และแสดงผลให้ผู้ใช้งานสามารถตรวจสอบได้ง่าย
-            </p>
-        </section>
 
-        <!-- อุปกรณ์ -->
-        <section class="card">
-            <h2>อุปกรณ์ที่ใช้</h2>
+        <ul class="nav-menu">
 
-            <ul>
-                <li>ESP32-2432S028</li>
-                <li>LDR Sensor</li>
-                <li>สาย Jumper</li>
-                <li>แหล่งจ่ายไฟ / USB</li>
-            </ul>
-        </section>
+            <li>
+                <a href="#about">
+                    เกี่ยวกับโครงงาน
+                </a>
+            </li>
 
-        <!-- การทำงาน -->
-        <section class="card">
-            <h2>หลักการทำงาน</h2>
+            <li>
+                <a href="#working">
+                    การทำงาน
+                </a>
+            </li>
 
-            <div class="highlight">
-                <ol>
-                    <li>LDR Sensor ตรวจจับปริมาณแสงในบริเวณนั้น</li>
+            <li>
+                <a href="#equipment">
+                    อุปกรณ์
+                </a>
+            </li>
 
-                    <li>
-                        ESP32 รับค่าจากเซนเซอร์และประมวลผลข้อมูล
-                    </li>
+            <li>
+                <a href="#objectives">
+                    วัตถุประสงค์
+                </a>
+            </li>
 
-                    <li>
-                        ระบบนำค่าที่ได้มาประเมินระดับความสว่าง
-                    </li>
+            <li>
+                <a href="#benefits">
+                    ประโยชน์
+                </a>
+            </li>
 
-                    <li>
-                        แสดงผลระดับความสว่างบนหน้าจอ TFT
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- คุณสมบัติ -->
-        <section class="card">
-            <h2>คุณสมบัติของโครงงาน</h2>
-
-            <ul>
-                <li>ตรวจวัดระดับแสงในสภาพแวดล้อม</li>
-                <li>แสดงข้อมูลบนหน้าจอ TFT</li>
-                <li>ใช้จำนวนอุปกรณ์ไม่มาก</li>
-                <li>สามารถนำไปประยุกต์ใช้กับระบบ Smart Home ได้</li>
-                <li>สามารถต่อยอดเป็นระบบควบคุมไฟอัตโนมัติได้</li>
-            </ul>
-        </section>
-
-        <!-- ประโยชน์ -->
-        <section class="card">
-            <h2>ประโยชน์ที่ได้รับ</h2>
-
-            <p>
-                โครงงานช่วยให้ผู้ใช้งานสามารถตรวจสอบระดับความสว่าง
-                ของพื้นที่ได้สะดวก และเป็นพื้นฐานสำหรับการพัฒนาระบบ
-                Smart Home หรือระบบควบคุมแสงสว่างอัตโนมัติในอนาคต
-            </p>
-
-            <p>
-                นอกจากนี้ยังช่วยให้ผู้จัดทำได้เรียนรู้การเขียนโปรแกรม
-                ESP32 การอ่านค่าจากเซนเซอร์ และการแสดงผลข้อมูล
-                บนหน้าจอ TFT
-            </p>
-        </section>
+        </ul>
 
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Smart Light Monitor</p>
-        <p>จัดทำโดย นายทีปกร เพชรย่องข่าย</p>
-        <p>แผนกวิชาเทคโนโลยีคอมพิวเตอร์ วิทยาลัยเทคนิคตรัง</p>
-    </footer>
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero" id="home">
+
+    <div class="hero-container">
+
+
+        <div>
+
+            <span class="hero-tag">
+                COMPUTER TECHNOLOGY PROJECT
+            </span>
+
+
+            <h1>
+                Smart Light<br>
+                Monitor
+            </h1>
+
+
+            <h2>
+                ระบบตรวจวัดและแสดงระดับความสว่าง
+            </h2>
+
+
+            <p class="hero-description">
+
+                โครงงานระบบตรวจวัดระดับความสว่าง
+                ที่ใช้เซนเซอร์ LDR ร่วมกับ
+                ESP32-2432S028 เพื่อวัดและประมวลผล
+                ระดับแสง พร้อมแสดงผลข้อมูลบนหน้าจอ TFT
+                ให้ผู้ใช้งานสามารถตรวจสอบค่าแสงได้ง่าย
+                และสะดวก
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#about"
+                    class="btn btn-primary"
+                >
+                    ดูรายละเอียดโครงงาน
+                </a>
+
+                <a
+                    href="#working"
+                    class="btn btn-outline"
+                >
+                    ดูหลักการทำงาน
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROJECT CARD -->
+
+        <div class="project-card">
+
+            <div class="light-icon">
+                💡
+            </div>
+
+
+            <h3>
+                Project Information
+            </h3>
+
+
+            <div class="project-info">
+
+                <div class="info-row">
+
+                    <span>
+                        ชื่อโครงงาน
+                    </span>
+
+                    <span>
+                        Smart Light Monitor
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        ผู้จัดทำ
+                    </span>
+
+                    <span>
+                        นายทีปกร เพชรย่องข่าย
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        แผนกวิชา
+                    </span>
+
+                    <span>
+                        เทคโนโลยีคอมพิวเตอร์
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        สถานศึกษา
+                    </span>
+
+                    <span>
+                        วิทยาลัยเทคนิคตรัง
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        อุปกรณ์หลัก
+                    </span>
+
+                    <span>
+                        ESP32 + LDR
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                ABOUT PROJECT
+            </div>
+
+            <h2 class="section-title">
+                เกี่ยวกับโครงงาน
+            </h2>
+
+            <p class="section-subtitle">
+
+                แนวคิดและที่มาของระบบ
+                Smart Light Monitor
+
+            </p>
+
+        </div>
+
+
+
+        <div class="about-grid">
+
+
+            <div class="card">
+
+                <h3>
+                    💡 หลักการและเหตุผล
+                </h3>
+
+                <p>
+
+                    Smart Light Monitor เป็นโครงงานที่พัฒนาขึ้น
+                    เพื่อใช้ตรวจวัดระดับความสว่างของสภาพแวดล้อม
+                    โดยใช้ LDR Sensor ในการตรวจจับปริมาณแสง
+                    และใช้บอร์ด ESP32-2432S028
+                    เป็นตัวประมวลผลข้อมูล
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    ค่าที่ได้จากเซนเซอร์จะถูกนำมาประมวลผล
+                    และแปลงเป็นระดับเปอร์เซ็นต์ความสว่าง
+                    จากนั้นแสดงผลบนหน้าจอ TFT
+                    เพื่อให้ผู้ใช้งานสามารถตรวจสอบ
+                    ระดับแสงได้อย่างสะดวก
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    🎯 แนวคิดของโครงงาน
+                </h3>
+
+                <p>
+
+                    ระบบถูกออกแบบให้มีโครงสร้างเรียบง่าย
+                    ใช้อุปกรณ์จำนวนน้อย และสามารถนำไปต่อยอด
+                    กับระบบ Smart Home หรือระบบควบคุม
+                    แสงสว่างอัตโนมัติได้ในอนาคต
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    โครงงานยังเป็นการประยุกต์ใช้ความรู้ด้าน
+                    Microcontroller, Sensor และ
+                    Embedded System เพื่อสร้างอุปกรณ์
+                    ตรวจวัดที่สามารถใช้งานได้จริง
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WORKING
+===================================================== -->
+
+<section id="working" style="background:#f8fafc;">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                HOW IT WORKS
+            </div>
+
+            <h2 class="section-title">
+                หลักการทำงาน
+            </h2>
+
+            <p class="section-subtitle">
+
+                ขั้นตอนการทำงานของระบบ
+                Smart Light Monitor
+
+            </p>
+
+        </div>
+
+
+
+        <div class="flow">
+
+
+            <div class="flow-card">
+
+                <div class="flow-number">
+                    01
+                </div>
+
+                <h3>
+                    ตรวจจับแสง
+                </h3>
+
+                <p>
+                    LDR Sensor ตรวจจับ
+                    ปริมาณแสงจากสภาพแวดล้อม
+                </p>
+
+            </div>
+
+
+
+            <div class="flow-card">
+
+                <div class="flow-number">
+                    02
+                </div>
+
+                <h3>
+                    รับข้อมูล
+                </h3>
+
+                <p>
+                    ESP32 รับค่าจาก LDR
+                    ผ่านขา Analog Input
+                </p>
+
+            </div>
+
+
+
+            <div class="flow-card">
+
+                <div class="flow-number">
+                    03
+                </div>
+
+                <h3>
+                    ประมวลผล
+                </h3>
+
+                <p>
+                    ระบบนำค่า ADC
+                    มาแปลงเป็นระดับความสว่าง
+                </p>
+
+            </div>
+
+
+
+            <div class="flow-card">
+
+                <div class="flow-number">
+                    04
+                </div>
+
+                <h3>
+                    แสดงผล
+                </h3>
+
+                <p>
+                    แสดงค่าเปอร์เซ็นต์
+                    และสถานะบนหน้าจอ TFT
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EQUIPMENT
+===================================================== -->
+
+<section id="equipment">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                HARDWARE
+            </div>
+
+            <h2 class="section-title">
+                อุปกรณ์ที่ใช้
+            </h2>
+
+            <p class="section-subtitle">
+
+                อุปกรณ์หลักที่ใช้ในการพัฒนาโครงงาน
+
+            </p>
+
+        </div>
+
+
+
+        <div class="equipment-grid">
+
+
+            <div class="equipment">
+
+                <div class="equipment-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    ESP32-2432S028
+                </h3>
+
+                <p>
+                    บอร์ดควบคุมและประมวลผล
+                    พร้อมหน้าจอ TFT
+                </p>
+
+            </div>
+
+
+
+            <div class="equipment">
+
+                <div class="equipment-icon">
+                    ☀️
+                </div>
+
+                <h3>
+                    LDR Sensor
+                </h3>
+
+                <p>
+                    เซนเซอร์ตรวจวัด
+                    ระดับความเข้มของแสง
+                </p>
+
+            </div>
+
+
+
+            <div class="equipment">
+
+                <div class="equipment-icon">
+                    🔌
+                </div>
+
+                <h3>
+                    Jumper Wire
+                </h3>
+
+                <p>
+                    ใช้สำหรับเชื่อมต่อ
+                    อุปกรณ์และเซนเซอร์
+                </p>
+
+            </div>
+
+
+
+            <div class="equipment">
+
+                <div class="equipment-icon">
+                    🔋
+                </div>
+
+                <h3>
+                    USB / Power
+                </h3>
+
+                <p>
+                    แหล่งจ่ายไฟสำหรับ
+                    ESP32
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OBJECTIVES
+===================================================== -->
+
+<section
+    id="objectives"
+    class="objectives"
+>
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                OBJECTIVES
+            </div>
+
+            <h2 class="section-title">
+                วัตถุประสงค์
+            </h2>
+
+            <p class="section-subtitle">
+
+                เป้าหมายในการพัฒนาโครงงาน
+
+            </p>
+
+        </div>
+
+
+
+        <div class="objective-list">
+
+
+            <div class="objective">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <p>
+                    เพื่อพัฒนาระบบตรวจวัดระดับความสว่าง
+                    โดยใช้ ESP32 และ LDR Sensor
+                </p>
+
+            </div>
+
+
+
+            <div class="objective">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <p>
+                    เพื่อศึกษาการอ่านค่าจาก Analog Sensor
+                    และการประมวลผลข้อมูลด้วย Microcontroller
+                </p>
+
+            </div>
+
+
+
+            <div class="objective">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <p>
+                    เพื่อแสดงผลข้อมูลระดับความสว่าง
+                    ผ่านหน้าจอ TFT
+                </p>
+
+            </div>
+
+
+
+            <div class="objective">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <p>
+                    เพื่อเป็นพื้นฐานในการพัฒนาระบบ
+                    Smart Home และระบบควบคุมแสงอัตโนมัติ
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section>
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                FEATURES
+            </div>
+
+            <h2 class="section-title">
+                ความสามารถของระบบ
+            </h2>
+
+        </div>
+
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h3>
+                        Light Level
+                    </h3>
+
+                    <p>
+                        แสดงระดับความสว่าง
+                        ในรูปแบบเปอร์เซ็นต์
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📈
+                </div>
+
+                <div>
+
+                    <h3>
+                        Light Indicator
+                    </h3>
+
+                    <p>
+                        แสดงแถบระดับความสว่าง
+                        เพื่อให้ดูข้อมูลได้ง่าย
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🖥️
+                </div>
+
+                <div>
+
+                    <h3>
+                        TFT Display
+                    </h3>
+
+                    <p>
+                        แสดงข้อมูลแบบ Real-time
+                        บนหน้าจอของบอร์ด
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Simple Hardware
+                    </h3>
+
+                    <p>
+                        ใช้อุปกรณ์จำนวนน้อย
+                        และสามารถประกอบได้ง่าย
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BENEFITS
+===================================================== -->
+
+<section id="benefits">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div class="section-label">
+                BENEFITS
+            </div>
+
+            <h2 class="section-title">
+                ประโยชน์ของโครงงาน
+            </h2>
+
+        </div>
+
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    ด้านการศึกษา
+                </h3>
+
+                <p>
+                    ช่วยเรียนรู้การทำงานของ
+                    Microcontroller, Sensor
+                    และการแสดงผลข้อมูล
+                </p>
+
+            </div>
+
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    🏠
+                </div>
+
+                <h3>
+                    Smart Home
+                </h3>
+
+                <p>
+                    สามารถนำแนวคิดไปต่อยอด
+                    กับระบบบ้านอัจฉริยะ
+                    และระบบควบคุมไฟ
+                </p>
+
+            </div>
+
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    ต่อยอดในอนาคต
+                </h3>
+
+                <p>
+                    สามารถเพิ่ม Wi-Fi,
+                    ระบบแจ้งเตือน หรือ
+                    ระบบควบคุมหลอดไฟอัตโนมัติ
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-title">
+            Smart Light Monitor
+        </div>
+
+        <div class="footer-author">
+
+            จัดทำโดย
+            <strong>
+                นายทีปกร เพชรย่องข่าย
+            </strong>
+
+            <br>
+
+            แผนกวิชาเทคโนโลยีคอมพิวเตอร์
+            วิทยาลัยเทคนิคตรัง
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <div class="copyright">
+
+            © 2026 Smart Light Monitor
+            | Computer Technology Project
+
+        </div>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>
