@@ -1,13 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<title>Project </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Light Monitor</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #1b5e20;
+            border-left: 5px solid #4caf50;
+            padding-left: 10px;
+        }
+
+        .info {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>My name teepakorn</h1>
-<p>tecnic com </p>
+    <!-- Header -->
+    <header>
+        <h1>Smart Light Monitor</h1>
+        <p>ระบบตรวจวัดและแสดงระดับความสว่าง</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ข้อมูลโครงงาน -->
+        <section class="card">
+            <h2>ข้อมูลโครงงาน</h2>
+
+            <div class="info">
+                <p><strong>ชื่อโครงงาน:</strong> Smart Light Monitor</p>
+
+                <p><strong>จัดทำโดย:</strong>
+                    นายทีปกร เพชรย่องข่าย
+                </p>
+
+                <p><strong>แผนกวิชา:</strong>
+                    เทคโนโลยีคอมพิวเตอร์
+                </p>
+
+                <p><strong>สถานศึกษา:</strong>
+                    วิทยาลัยเทคนิคตรัง
+                </p>
+            </div>
+        </section>
+
+        <!-- บทนำ -->
+        <section class="card">
+            <h2>หลักการและเหตุผล</h2>
+
+            <p>
+                Smart Light Monitor เป็นโครงงานที่พัฒนาขึ้นเพื่อใช้ตรวจวัด
+                ระดับความสว่างของสภาพแวดล้อม โดยใช้เซนเซอร์ LDR
+                ในการตรวจจับปริมาณแสง และใช้บอร์ด ESP32-2432S028
+                เป็นตัวประมวลผลและแสดงผลข้อมูลบนหน้าจอ TFT
+            </p>
+
+            <p>
+                ระบบสามารถนำค่าที่ตรวจวัดได้มาประเมินระดับความสว่าง
+                และแสดงผลให้ผู้ใช้งานสามารถตรวจสอบได้ง่าย
+            </p>
+        </section>
+
+        <!-- อุปกรณ์ -->
+        <section class="card">
+            <h2>อุปกรณ์ที่ใช้</h2>
+
+            <ul>
+                <li>ESP32-2432S028</li>
+                <li>LDR Sensor</li>
+                <li>สาย Jumper</li>
+                <li>แหล่งจ่ายไฟ / USB</li>
+            </ul>
+        </section>
+
+        <!-- การทำงาน -->
+        <section class="card">
+            <h2>หลักการทำงาน</h2>
+
+            <div class="highlight">
+                <ol>
+                    <li>LDR Sensor ตรวจจับปริมาณแสงในบริเวณนั้น</li>
+
+                    <li>
+                        ESP32 รับค่าจากเซนเซอร์และประมวลผลข้อมูล
+                    </li>
+
+                    <li>
+                        ระบบนำค่าที่ได้มาประเมินระดับความสว่าง
+                    </li>
+
+                    <li>
+                        แสดงผลระดับความสว่างบนหน้าจอ TFT
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- คุณสมบัติ -->
+        <section class="card">
+            <h2>คุณสมบัติของโครงงาน</h2>
+
+            <ul>
+                <li>ตรวจวัดระดับแสงในสภาพแวดล้อม</li>
+                <li>แสดงข้อมูลบนหน้าจอ TFT</li>
+                <li>ใช้จำนวนอุปกรณ์ไม่มาก</li>
+                <li>สามารถนำไปประยุกต์ใช้กับระบบ Smart Home ได้</li>
+                <li>สามารถต่อยอดเป็นระบบควบคุมไฟอัตโนมัติได้</li>
+            </ul>
+        </section>
+
+        <!-- ประโยชน์ -->
+        <section class="card">
+            <h2>ประโยชน์ที่ได้รับ</h2>
+
+            <p>
+                โครงงานช่วยให้ผู้ใช้งานสามารถตรวจสอบระดับความสว่าง
+                ของพื้นที่ได้สะดวก และเป็นพื้นฐานสำหรับการพัฒนาระบบ
+                Smart Home หรือระบบควบคุมแสงสว่างอัตโนมัติในอนาคต
+            </p>
+
+            <p>
+                นอกจากนี้ยังช่วยให้ผู้จัดทำได้เรียนรู้การเขียนโปรแกรม
+                ESP32 การอ่านค่าจากเซนเซอร์ และการแสดงผลข้อมูล
+                บนหน้าจอ TFT
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Smart Light Monitor</p>
+        <p>จัดทำโดย นายทีปกร เพชรย่องข่าย</p>
+        <p>แผนกวิชาเทคโนโลยีคอมพิวเตอร์ วิทยาลัยเทคนิคตรัง</p>
+    </footer>
 
 </body>
 </html>
-
